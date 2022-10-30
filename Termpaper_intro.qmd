@@ -1,0 +1,10 @@
+---
+title: "Termpaper"
+author: "Sindre og Morten"
+format: html
+editor: visual
+---
+
+## Oppgave 1
+
+Hei
