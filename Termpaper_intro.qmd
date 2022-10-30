@@ -3,6 +3,9 @@ title: "Termpaper"
 author: "Sindre og Morten"
 format: html
 editor: visual
+lang: nb-NO
+bibliography: MSB_205_Termpaper.bib
+csl: apa-no-ampersand.csl
 ---
 
 ## Oppgave 1
