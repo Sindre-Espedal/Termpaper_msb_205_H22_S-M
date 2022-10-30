@@ -7,10 +7,6 @@ lang: nb-NO
 bibliography: MSB_205_Termpaper.bib
 ---
 
-## Oppgave 1
-
-Hei
-
 ```{r setup, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(dplyr)
@@ -30,5 +26,34 @@ library(readr)
 library(lubridate)
 options(scipen = 777)
 ```
+
+# Oppgave 1
+
+Tester om dette
+
+### C - Why could it be important to define a housing market as a single metropolitan (or travel to work) area and studying a relatively short period of time, when estimating
+
+#### i. hedonic price function?
+
+Bishop forklarer at i hedonisk modell innebærer det at markedet bør defineres slik at «loven om en prisfunksjon» oppfylles [@Bishop2020]. Med en prisfunksjon menes det at identiske boliger vil selges til samme pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige grensene som tilfredsstiller denne betingelsen kan variere på tvers av rom og tid ettersom informasjon, institusjoner og flyttekostnader endres [@bishop2020]. I prakis er det vanlig å definere markedet som et enkelt storbyområde (single metropolian) over noen år. Flyttekostnader vil egentlig bryte med loven om en prisfunksjon, men for husholdninger som flytter innenfor dette storbyområdet er det lite sannsynlig at disse kostnadene vil variere noe særlig.
+
+Årsaken til det er at de fysiske kostnadene som vel som de økonomiske (f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder
+i hovedstadsområdet. De psykologiske kostnadene er også mer begrenset
+ved
+flytting fordi det tillattes i lettere grad å opprettholde relasjonene
+til
+familie, venner og nabolag. Dette gjør at loven om én prisfunksjon
+opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje.
+Altså, hvis
+to hus som er tilsvarende like i samme storbyområdet selges, så velger
+kjøperne
+naturligvis det rimeligste.
+
+#### ii. Explain intuitively, by using an example, why it is important to avoid omitted variable bias when estimating a hedonic price model.
+
+Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter er romlig korrelert på grunn av de naturlige trekkene ved geografien som for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane varme øyer) og stemming på lokale felles goder. Dette potensialet for romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel skjevhet [@Bishop2020]. Det er først og fremst fordi det virker usannsynlig at forskere vil være i stand til å inkludere alle bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og dermed forårsake skjevhet. 
+Dette kan forklares ved et eksempel: 
+Hvis velstående og velutdannede boligkjøpere flytter til områder med bedre luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering, vil estimater av MWTP for luftkvalitet være skjev oppover hvis skolekvalitet utelates fra modellen. Potensialet for denne typen oppførsel fra huseiere betyr at for at de resulterende estimatene skal være troverdige, må forskningsdesignet isolere eksogen variasjon i tilbudet av interesse [@Bishop2020].
+
 
 # References
