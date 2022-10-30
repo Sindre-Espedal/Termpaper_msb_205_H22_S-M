@@ -11,7 +11,7 @@ bibliography: MSB_205_Termpaper.bib
 
 Hei
 
-```{r libraries}
+```{r setup, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(dplyr)
 library(huxtable)
@@ -28,7 +28,7 @@ library(units)
 library(foreign)
 library(readr)
 library(lubridate)
-options(scipen = 999)
+options(scipen = 777)
 ```
 
 # References
