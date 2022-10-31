@@ -92,13 +92,79 @@ tilbudet av interesse [@bishop2020].
 
 # Oppgave 2
 
-## i. 
+## i.
+Så over variablene og definisjonene på dem hos Kaggle.
 
 ## ii.
+
 ```{r}
 kc_house_data <- read_csv("kc_house_data.csv")
 ```
 
+## iii.
+
+```{r}
+kc_house_data <- arrange(kc_house_data, desc(date))
+```
+
+## iv.
+
+```{r}
+kc_house_data <- kc_house_data %>% 
+  distinct(id, .keep_all = TRUE)
+```
+
+## v & vi.
+
+```{r}
+kc_house_data_sf <- st_as_sf(kc_house_data,
+                             coords = c(x = "long",
+                                        y = "lat"),
+                             crs = 4326) %>% 
+  st_transform(2926)
+```
+
+## vii.
+
+**koordinatene til Seattle:**
+
+*Norske (wikepedia)*:
+
+-   47.60621, -122.33207
+
+*Engelske (wikepedia)*:
+
+-   47.609722, -122.333056
+
+```{r}
+cbd <- st_sfc(st_point(c(-122.33207, 47.60621)), crs = 4326) %>% 
+  st_transform(2926)
+```
+
+## viii.
+
+```{r}
+kc_house_data_sf <-  kc_house_data_sf %>% 
+  mutate(dist_cbd = st_distance(cbd, ., 
+                                by_element = TRUE),
+    dist_cbd_km = set_units(dist_cbd, km)
+  )
+```
+
+
+# Oppgave 3
+
+
+
+
+
+
+
+
+
+
 
 
 # References
+
+

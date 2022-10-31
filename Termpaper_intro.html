@@ -16,6 +16,69 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -85,26 +148,94 @@ div.csl-indent {
 </div>
 <section id="oppgave-1" class="level1">
 <h1>Oppgave 1</h1>
-<<<<<<< HEAD
-<section id="a--" class="level3">
-<h3 class="anchored" data-anchor-id="a--">A -</h3>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">A</h3>
 <p>Hedoniske modeller blir tatt i bruk for å måle marginal «willingness to pay» (MWTP), denne blir tatt i bruk for å måle boligmarkedet sine miljømessige kvaliteter. Den hedoniske modellen ble fremstillt ved å ta i bruk et stort og avansert datasett fra boligmarkeder i store byer som har en avansert økonomi. Jo mer tilgang vi får på data til disse byområdene, desto bedre analyser får vi med bruk av en hedonisk modell.</p>
 <p>Rosens første steg handler om å kunne definere et marked som vil tilfredstille «law of one function». «Law of one function» er at hus som er identiske blir solgt for den samme prisen i et gitt marked. Steg to handler om data innsamling. Det forteller oss at det er met oppnålig med å ha et tilfeldig utvalg. Slike datainnsamlinger til en hedonisk modell som omhandler eiendomsverdi har som regel fokus på eneboliger.</p>
 </section>
-=======
-<p>Tester om dette</p>
->>>>>>> 7dcf0854adf73ad99a8fc0387767493e468fb029
 <section id="c---why-could-it-be-important-to-define-a-housing-market-as-a-single-metropolitan-or-travel-to-work-area-and-studying-a-relatively-short-period-of-time-when-estimating" class="level3">
 <h3 class="anchored" data-anchor-id="c---why-could-it-be-important-to-define-a-housing-market-as-a-single-metropolitan-or-travel-to-work-area-and-studying-a-relatively-short-period-of-time-when-estimating">C - Why could it be important to define a housing market as a single metropolitan (or travel to work) area and studying a relatively short period of time, when estimating</h3>
 <section id="i.-hedonic-price-function" class="level4">
 <h4 class="anchored" data-anchor-id="i.-hedonic-price-function">i. hedonic price function?</h4>
-<p>Bishop forklarer at i hedonisk modell innebærer det at markedet bør defineres slik at «loven om en prisfunksjon» oppfylles <span class="citation" data-cites="Bishop2020">(<a href="#ref-Bishop2020" role="doc-biblioref"><strong>Bishop2020?</strong></a>)</span>. Med en prisfunksjon menes det at identiske boliger vil selges til samme pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige grensene som tilfredsstiller denne betingelsen kan variere på tvers av rom og tid ettersom informasjon, institusjoner og flyttekostnader endres <span class="citation" data-cites="bishop2020">(<a href="#ref-bishop2020" role="doc-biblioref">Bishop mfl. 2020</a>)</span>. I prakis er det vanlig å definere markedet som et enkelt storbyområde (single metropolian) over noen år. Flyttekostnader vil egentlig bryte med loven om en prisfunksjon, men for husholdninger som flytter innenfor dette storbyområdet er det lite sannsynlig at disse kostnadene vil variere noe særlig.</p>
+<p>Bishop forklarer at i hedonisk modell innebærer det at markedet bør defineres slik at «loven om en prisfunksjon» oppfylles <span class="citation" data-cites="bishop2020">(<a href="#ref-bishop2020" role="doc-biblioref">Bishop mfl. 2020</a>)</span>. Med en prisfunksjon menes det at identiske boliger vil selges til samme pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige grensene som tilfredsstiller denne betingelsen kan variere på tvers av rom og tid ettersom informasjon, institusjoner og flyttekostnader endres <span class="citation" data-cites="bishop2020">(<a href="#ref-bishop2020" role="doc-biblioref">Bishop mfl. 2020</a>)</span>. I prakis er det vanlig å definere markedet som et enkelt storbyområde (single metropolian) over noen år. Flyttekostnader vil egentlig bryte med loven om en prisfunksjon, men for husholdninger som flytter innenfor dette storbyområdet er det lite sannsynlig at disse kostnadene vil variere noe særlig.</p>
 <p>Årsaken til det er at de fysiske kostnadene som vel som de økonomiske (f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder i hovedstadsområdet. De psykologiske kostnadene er også mer begrenset ved flytting fordi det tillattes i lettere grad å opprettholde relasjonene til familie, venner og nabolag. Dette gjør at loven om én prisfunksjon opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje. Altså, hvis to hus som er tilsvarende like i samme storbyområdet selges, så velger kjøperne naturligvis det rimeligste.</p>
 </section>
 <section id="ii.-explain-intuitively-by-using-an-example-why-it-is-important-to-avoid-omitted-variable-bias-when-estimating-a-hedonic-price-model." class="level4">
 <h4 class="anchored" data-anchor-id="ii.-explain-intuitively-by-using-an-example-why-it-is-important-to-avoid-omitted-variable-bias-when-estimating-a-hedonic-price-model.">ii. Explain intuitively, by using an example, why it is important to avoid omitted variable bias when estimating a hedonic price model.</h4>
-<p>Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter er romlig korrelert på grunn av de naturlige trekkene ved geografien som for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane varme øyer) og stemming på lokale felles goder. Dette potensialet for romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel skjevhet <span class="citation" data-cites="Bishop2020">(<a href="#ref-Bishop2020" role="doc-biblioref"><strong>Bishop2020?</strong></a>)</span>. Det er først og fremst fordi det virker usannsynlig at forskere vil være i stand til å inkludere alle bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis velstående og velutdannede boligkjøpere flytter til områder med bedre luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering, vil estimater av MWTP for luftkvalitet være skjev oppover hvis skolekvalitet utelates fra modellen. Potensialet for denne typen oppførsel fra huseiere betyr at for at de resulterende estimatene skal være troverdige, må forskningsdesignet isolere eksogen variasjon i tilbudet av interesse <span class="citation" data-cites="Bishop2020">(<a href="#ref-Bishop2020" role="doc-biblioref"><strong>Bishop2020?</strong></a>)</span>.</p>
+<p>Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter er romlig korrelert på grunn av de naturlige trekkene ved geografien som for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane varme øyer) og stemming på lokale felles goder. Dette potensialet for romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel skjevhet <span class="citation" data-cites="bishop2020">(<a href="#ref-bishop2020" role="doc-biblioref">Bishop mfl. 2020</a>)</span>. Det er først og fremst fordi det virker usannsynlig at forskere vil være i stand til å inkludere alle bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis velstående og velutdannede boligkjøpere flytter til områder med bedre luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering, vil estimater av MWTP for luftkvalitet være skjev oppover hvis skolekvalitet utelates fra modellen. Potensialet for denne typen oppførsel fra huseiere betyr at for at de resulterende estimatene skal være troverdige, må forskningsdesignet isolere eksogen variasjon i tilbudet av interesse <span class="citation" data-cites="bishop2020">(<a href="#ref-bishop2020" role="doc-biblioref">Bishop mfl. 2020</a>)</span>.</p>
 </section>
+</section>
+</section>
+<section id="oppgave-2" class="level1">
+<h1>Oppgave 2</h1>
+<section id="i." class="level2">
+<h2 class="anchored" data-anchor-id="i.">i.</h2>
+</section>
+<section id="ii." class="level2">
+<h2 class="anchored" data-anchor-id="ii.">ii.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>kc_house_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"kc_house_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 21613 Columns: 21
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (1): id
+dbl  (19): price, bedrooms, bathrooms, sqft_living, sqft_lot, floors, waterf...
+dttm  (1): date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="iii." class="level2">
+<h2 class="anchored" data-anchor-id="iii.">iii.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>kc_house_data <span class="ot">&lt;-</span> <span class="fu">arrange</span>(kc_house_data, <span class="fu">desc</span>(date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="iv." class="level2">
+<h2 class="anchored" data-anchor-id="iv.">iv.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>kc_house_data <span class="ot">&lt;-</span> kc_house_data <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="v-vi." class="level2">
+<h2 class="anchored" data-anchor-id="v-vi.">v &amp; vi.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>kc_house_data_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(kc_house_data,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">coords =</span> <span class="fu">c</span>(<span class="at">x =</span> <span class="st">"long"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">y =</span> <span class="st">"lat"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">2926</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vii." class="level2">
+<h2 class="anchored" data-anchor-id="vii.">vii.</h2>
+<p><strong>koordinatene til Seattle:</strong></p>
+<p><em>Norske (wikepedia)</em>:</p>
+<ul>
+<li>47.60621, -122.33207</li>
+</ul>
+<p><em>Engelske (wikepedia)</em>:</p>
+<ul>
+<li>47.609722, -122.333056</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cbd <span class="ot">&lt;-</span> <span class="fu">st_sfc</span>(<span class="fu">st_point</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">122.33207</span>, <span class="fl">47.60621</span>)), <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="dv">2926</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="viii." class="level2">
+<h2 class="anchored" data-anchor-id="viii.">viii.</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>kc_house_data_sf <span class="ot">&lt;-</span>  kc_house_data_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dist_cbd =</span> <span class="fu">st_distance</span>(cbd, ., </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">by_element =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">dist_cbd_km =</span> <span class="fu">set_units</span>(dist_cbd, km)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="references" class="level1 unnumbered">
