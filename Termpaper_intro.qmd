@@ -160,6 +160,54 @@ acs_b19101_fam_inc <- acs_b19101_fam_inc %>%
     mutate(high = (E19101150 + E19101151 + E19101152 + E19101153)/E19101137)
 ```
 
+```{r}
+acs_b19101_fam_inc <- acs_b19101_fam_inc %>% 
+    select(GEOIDTRT, low, mid, high) %>% 
+    rename(GEO_ID_TRT = GEOIDTRT)
+```
+
+```{r}
+kc_wadoh_map_2 <- left_join(
+    acs_b19101_fam_inc,
+    st_drop_geometry(kc_wadoh_map),
+    by = "GEO_ID_TRT")
+```
+
+```{r}
+kc_tracts10 <- here("../maps/censusSHP/tracts10.shp") %>% 
+  st_read() %>% 
+  st_transform(2926)
+```
+
+```{r}
+kc_tracts10_shore <- here("../maps/censusSHP/tracts10_shore.shp") %>% 
+  st_read() %>% 
+  st_transform(2926)
+```
+
+```{r}
+kc_tracts10_env_data <- left_join(
+  kc_tracts10, kc_wadoh_map_2,
+  by = "GEO_ID_TRT"
+  )
+kc_tracts10_shore_env_data <- left_join(
+  kc_tracts10_shore, kc_wadoh_map_2,
+  by = "GEO_ID_TRT"
+  )
+```
+
+```{r}
+kc_houses_env_var <- st_join(kc_house_data_sf, kc_tracts10_env_data)
+kc_tracts10_shore_env_var <- st_join(kc_house_data_sf, kc_tracts10_shore_env_data)
+```
+
+```{r}
+st_write(kc_house_data, "../maps/kc_house_data.gpkg", append = FALSE)
+st_write(kc_tracts10, "../maps/kc_tracts10.gpkg", append = FALSE)
+st_write(kc_tracts10_shore, "../maps/kc_tracts10_shore.gpkg", append = FALSE)
+st_write(kc_houses_env_var, "../maps/kc_houses_env_var.gpkg", append = FALSE)
+st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", append = FALSE)
+```
 
 
 # References
