@@ -328,7 +328,7 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 ```{r, message=FALSE}
 attach(kc_houses_env_var_omit)
 ```
-## i. Huskarakterisika
+## i. Huskarakteristika
 ```{r}
 mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15"
 ```
