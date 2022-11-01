@@ -32,21 +32,64 @@ options(scipen = 777)
 
 ### A
 
-Hedoniske modeller blir tatt i bruk for å måle marginal «willingness to pay» (MWTP), denne blir tatt i bruk for å måle boligmarkedet sine miljømessige kvaliteter. Den hedoniske modellen ble fremstillt ved å ta i bruk et stort og avansert datasett fra boligmarkeder i store byer som har en avansert økonomi. Jo mer tilgang vi får på data til disse byområdene, desto bedre analyser får vi med bruk av en hedonisk modell.
+Hedoniske modeller blir tatt i bruk for å måle marginal «willingness to
+pay» (MWTP), denne blir tatt i bruk for å måle boligmarkedet sine
+miljømessige kvaliteter. Den hedoniske modellen ble fremstillt ved å ta
+i bruk et stort og avansert datasett fra boligmarkeder i store byer som
+har en avansert økonomi. Jo mer tilgang vi får på data til disse
+byområdene, desto bedre analyser får vi med bruk av en hedonisk modell.
 
-Rosens første steg handler om å kunne definere et marked som vil tilfredstille «law of one function». «Law of one function» er at hus som er identiske blir solgt for den samme prisen i et gitt marked. Steg to handler om data innsamling. Det forteller oss at det er met oppnålig med å ha et tilfeldig utvalg. Slike datainnsamlinger til en hedonisk modell som omhandler eiendomsverdi har som regel fokus på eneboliger.
+Rosens første steg handler om å kunne definere et marked som vil
+tilfredstille «law of one function». «Law of one function» er at hus som
+er identiske blir solgt for den samme prisen i et gitt marked. Steg to
+handler om data innsamling. Det forteller oss at det er met oppnålig med
+å ha et tilfeldig utvalg. Slike datainnsamlinger til en hedonisk modell
+som omhandler eiendomsverdi har som regel fokus på eneboliger.
 
 ### C - Why could it be important to define a housing market as a single metropolitan (or travel to work) area and studying a relatively short period of time, when estimating
 
 #### i. hedonic price function?
 
-Bishop forklarer at i hedonisk modell innebærer det at markedet bør defineres slik at «loven om en prisfunksjon» oppfylles [@bishop2020]. Med en prisfunksjon menes det at identiske boliger vil selges til samme pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige grensene som tilfredsstiller denne betingelsen kan variere på tvers av rom og tid ettersom informasjon, institusjoner og flyttekostnader endres [@bishop2020]. I prakis er det vanlig å definere markedet som et enkelt storbyområde (single metropolian) over noen år. Flyttekostnader vil egentlig bryte med loven om en prisfunksjon, men for husholdninger som flytter innenfor dette storbyområdet er det lite sannsynlig at disse kostnadene vil variere noe særlig.
+Bishop forklarer at i hedonisk modell innebærer det at markedet bør
+defineres slik at «loven om en prisfunksjon» oppfylles [@bishop2020].
+Med en prisfunksjon menes det at identiske boliger vil selges til samme
+pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige
+grensene som tilfredsstiller denne betingelsen kan variere på tvers av
+rom og tid ettersom informasjon, institusjoner og flyttekostnader endres
+[@bishop2020]. I prakis er det vanlig å definere markedet som et enkelt
+storbyområde (single metropolian) over noen år. Flyttekostnader vil
+egentlig bryte med loven om en prisfunksjon, men for husholdninger som
+flytter innenfor dette storbyområdet er det lite sannsynlig at disse
+kostnadene vil variere noe særlig.
 
-Årsaken til det er at de fysiske kostnadene som vel som de økonomiske (f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder i hovedstadsområdet. De psykologiske kostnadene er også mer begrenset ved flytting fordi det tillattes i lettere grad å opprettholde relasjonene til familie, venner og nabolag. Dette gjør at loven om én prisfunksjon opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje. Altså, hvis to hus som er tilsvarende like i samme storbyområdet selges, så velger kjøperne naturligvis det rimeligste.
+Årsaken til det er at de fysiske kostnadene som vel som de økonomiske
+(f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder i
+hovedstadsområdet. De psykologiske kostnadene er også mer begrenset ved
+flytting fordi det tillattes i lettere grad å opprettholde relasjonene
+til familie, venner og nabolag. Dette gjør at loven om én prisfunksjon
+opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje.
+Altså, hvis to hus som er tilsvarende like i samme storbyområdet selges,
+så velger kjøperne naturligvis det rimeligste.
 
 #### ii. Explain intuitively, by using an example, why it is important to avoid omitted variable bias when estimating a hedonic price model.
 
-Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter er romlig korrelert på grunn av de naturlige trekkene ved geografien som for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane varme øyer) og stemming på lokale felles goder. Dette potensialet for romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel skjevhet [@bishop2020]. Det er først og fremst fordi det virker usannsynlig at forskere vil være i stand til å inkludere alle bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis velstående og velutdannede boligkjøpere flytter til områder med bedre luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering, vil estimater av MWTP for luftkvalitet være skjev oppover hvis skolekvalitet utelates fra modellen. Potensialet for denne typen oppførsel fra huseiere betyr at for at de resulterende estimatene skal være troverdige, må forskningsdesignet isolere eksogen variasjon i tilbudet av interesse [@bishop2020].
+Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter
+er romlig korrelert på grunn av de naturlige trekkene ved geografien som
+for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane
+varme øyer) og stemming på lokale felles goder. Dette potensialet for
+romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel
+skjevhet [@bishop2020]. Det er først og fremst fordi det virker
+usannsynlig at forskere vil være i stand til å inkludere alle
+bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte
+fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og
+dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis
+velstående og velutdannede boligkjøpere flytter til områder med bedre
+luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering,
+vil estimater av MWTP for luftkvalitet være skjev oppover hvis
+skolekvalitet utelates fra modellen. Potensialet for denne typen
+oppførsel fra huseiere betyr at for at de resulterende estimatene skal
+være troverdige, må forskningsdesignet isolere eksogen variasjon i
+tilbudet av interesse [@bishop2020].
 
 # Oppgave 2
 
@@ -209,5 +252,58 @@ st_write(kc_houses_env_var, "../maps/kc_houses_env_var.gpkg", append = FALSE)
 st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", append = FALSE)
 ```
 
+# Oppgave 4
+
+## i.
+
+```{r}
+#summary(kc_tracts10_env_data) <- La til hashtag for å unngå render-problemer
+```
+
+```{r}
+#summary(kc_tracts10_shore_env_var) <- La til hashtag for å unngå render-problemer
+```
+
+## ii.
+
+I QGIS fant vi følgende observasjoner ved å se på *tracts10*, *tracts10_shore* & *kc_houses_env_var*:
+
+![observasjon utenfor WA state](utenfor_WAstate.png)
+
+![Observasjon utenfor kystlinjen.a](utenfor_kystlinjen_1.png)
+
+![Observasjon utenfor kystlinjen.b](utenfor_kystlinjen_2.png)
+
+
+## iii.
+
+Dropper Observasjonen 3518000180 ved å:
+
+```{r}
+kc_houses_env_var <- arrange(kc_houses_env_var, desc(id))
+kc_houses_env_var_omit <- kc_houses_env_var[-c(11997),]
+```
+
+
+```{r}
+st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append = FALSE)
+```
+
+```{r}
+kc_houses_env_var_omit <- kc_houses_env_var_omit %>% 
+    mutate(
+        year_month = substr(date, start = 1, stop = 7))
+```
+
+
+
+
+
+
+
+
+
 
 # References
+
+
