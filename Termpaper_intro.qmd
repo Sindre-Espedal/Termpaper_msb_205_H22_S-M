@@ -32,72 +32,32 @@ options(scipen = 777)
 
 ### A
 
-Hedoniske modeller blir tatt i bruk for å måle marginal «willingness to
-pay» (MWTP), denne blir tatt i bruk for å måle boligmarkedet sine
-miljømessige kvaliteter. Den hedoniske modellen ble fremstillt ved å ta
-i bruk et stort og avansert datasett fra boligmarkeder i store byer som
-har en avansert økonomi. Jo mer tilgang vi får på data til disse
-byområdene, desto bedre analyser får vi med bruk av en hedonisk modell.
+Hedoniske modeller blir tatt i bruk for å måle marginal «willingness to pay» (MWTP), denne blir tatt i bruk for å måle boligmarkedet sine miljømessige kvaliteter. Den hedoniske modellen ble fremstillt ved å ta i bruk et stort og avansert datasett fra boligmarkeder i store byer som har en avansert økonomi. Jo mer tilgang vi får på data til disse byområdene, desto bedre analyser får vi med bruk av en hedonisk modell.
 
-Rosens første steg handler om å kunne definere et marked som vil
-tilfredstille «law of one function». «Law of one function» er at hus som
-er identiske blir solgt for den samme prisen i et gitt marked. Steg to
-handler om data innsamling. Det forteller oss at det er met oppnålig med
-å ha et tilfeldig utvalg. Slike datainnsamlinger til en hedonisk modell
-som omhandler eiendomsverdi har som regel fokus på eneboliger.
+Rosens første steg handler om å kunne definere et marked som vil tilfredstille «law of one function». «Law of one function» er at hus som er identiske blir solgt for den samme prisen i et gitt marked. Steg to handler om data innsamling. Det forteller oss at det er met oppnålig med å ha et tilfeldig utvalg. Slike datainnsamlinger til en hedonisk modell som omhandler eiendomsverdi har som regel fokus på eneboliger.
 
 ### C - Why could it be important to define a housing market as a single metropolitan (or travel to work) area and studying a relatively short period of time, when estimating
 
 #### i. hedonic price function?
 
-Bishop forklarer at i hedonisk modell innebærer det at markedet bør
-defineres slik at «loven om en prisfunksjon» oppfylles [@bishop2020].
-Med en prisfunksjon menes det at identiske boliger vil selges til samme
-pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige
-grensene som tilfredsstiller denne betingelsen kan variere på tvers av
-rom og tid ettersom informasjon, institusjoner og flyttekostnader endres
-[@bishop2020]. I prakis er det vanlig å definere markedet som et enkelt
-storbyområde (single metropolian) over noen år. Flyttekostnader vil
-egentlig bryte med loven om en prisfunksjon, men for husholdninger som
-flytter innenfor dette storbyområdet er det lite sannsynlig at disse
-kostnadene vil variere noe særlig.
+Bishop forklarer at i hedonisk modell innebærer det at markedet bør defineres slik at «loven om en prisfunksjon» oppfylles [@bishop2020]. Med en prisfunksjon menes det at identiske boliger vil selges til samme pris gjennom hele markedet. Likevel, de nøyaktige romlige og tidsmessige grensene som tilfredsstiller denne betingelsen kan variere på tvers av rom og tid ettersom informasjon, institusjoner og flyttekostnader endres [@bishop2020]. I prakis er det vanlig å definere markedet som et enkelt storbyområde (single metropolian) over noen år. Flyttekostnader vil egentlig bryte med loven om en prisfunksjon, men for husholdninger som flytter innenfor dette storbyområdet er det lite sannsynlig at disse kostnadene vil variere noe særlig.
 
-Årsaken til det er at de fysiske kostnadene som vel som de økonomiske
-(f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder i
-hovedstadsområdet. De psykologiske kostnadene er også mer begrenset ved
-flytting fordi det tillattes i lettere grad å opprettholde relasjonene
-til familie, venner og nabolag. Dette gjør at loven om én prisfunksjon
-opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje.
-Altså, hvis to hus som er tilsvarende like i samme storbyområdet selges,
-så velger kjøperne naturligvis det rimeligste.
+Årsaken til det er at de fysiske kostnadene som vel som de økonomiske (f.eks lastebil-leie) ikke endrer seg på tvers av destinasjonssteder i hovedstadsområdet. De psykologiske kostnadene er også mer begrenset ved flytting fordi det tillattes i lettere grad å opprettholde relasjonene til familie, venner og nabolag. Dette gjør at loven om én prisfunksjon opprettholdes mellom lokasjoner i et storbyområde gjennom arbitrasje. Altså, hvis to hus som er tilsvarende like i samme storbyområdet selges, så velger kjøperne naturligvis det rimeligste.
 
 #### ii. Explain intuitively, by using an example, why it is important to avoid omitted variable bias when estimating a hedonic price model.
 
-Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter
-er romlig korrelert på grunn av de naturlige trekkene ved geografien som
-for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane
-varme øyer) og stemming på lokale felles goder. Dette potensialet for
-romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel
-skjevhet [@bishop2020]. Det er først og fremst fordi det virker
-usannsynlig at forskere vil være i stand til å inkludere alle
-bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte
-fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og
-dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis
-velstående og velutdannede boligkjøpere flytter til områder med bedre
-luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering,
-vil estimater av MWTP for luftkvalitet være skjev oppover hvis
-skolekvalitet utelates fra modellen. Potensialet for denne typen
-oppførsel fra huseiere betyr at for at de resulterende estimatene skal
-være troverdige, må forskningsdesignet isolere eksogen variasjon i
-tilbudet av interesse [@bishop2020].
+Gjennom empirien og teorien er det grunn til å tro av miljøfasiliteter er romlig korrelert på grunn av de naturlige trekkene ved geografien som for eksempel fjell og hav, miljøtilbakemeldingseffekter (f.eks urbane varme øyer) og stemming på lokale felles goder. Dette potensialet for romlig korrelasjon har ført til utbredt bekymring for utelatt-variabel skjevhet [@bishop2020]. Det er først og fremst fordi det virker usannsynlig at forskere vil være i stand til å inkludere alle bekvemmeligheter som betyr noe for kjøpere. I tillegg vil uobserverte fasiliteter sannsynligvis være korrelert med tilbudet av interesse, og dermed forårsake skjevhet. Dette kan forklares ved et eksempel: Hvis velstående og velutdannede boligkjøpere flytter til områder med bedre luftkvalitet og deretter stemmer for å øke offentlig skolefinansiering, vil estimater av MWTP for luftkvalitet være skjev oppover hvis skolekvalitet utelates fra modellen. Potensialet for denne typen oppførsel fra huseiere betyr at for at de resulterende estimatene skal være troverdige, må forskningsdesignet isolere eksogen variasjon i tilbudet av interesse [@bishop2020].
 
 # Oppgave 2
 
 ## i.
+
 Så over variablene og definisjonene på dem hos Kaggle.
 
 ## ii.
+
 Laster inn data
+
 ```{r}
 kc_house_data <- read_csv("kc_house_data.csv")
 ```
@@ -152,9 +112,7 @@ kc_house_data_sf <-  kc_house_data_sf %>%
   )
 ```
 
-
 # Oppgave 3
-
 
 ```{r}
 kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>% 
@@ -162,14 +120,46 @@ kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculat
   st_transform(2926)
 ```
 
+```{r}
+kc_wadoh_map <- kc_wadoh_map %>% 
+  select(
+  GEO_ID_TRT,
+  EHD_percen,#Environmental Health Index, weighted score many vars
+  linguist_2,#Pop. age 5+ speaking English less than "very well"
+  poverty_pe,#Percentage people living in poverty
+  POC_percen,#People of Color in percentage of pop. in tract
+  transporta,#% of income spent on transportation median family in tract
+  unemploy_2,#percentage unemployed
+  housing_pe,#% of households in group "Unaffordable Housing" (>30% inc.)
+  traffic_pe,#% of pop. near heavy traffic roadways
+  diesel,# nox consentration
+  ozone,# ozone consentration
+  PM25, # consentration of Particulate Matter in air
+  toxic_rele, # Toxic release from factories
+  hazardous_, # Hazardous Waste Treatment Storage and disposal Facilities
+  lead_perce, # measure of Lead paint in houses
+  superfund, # Proximity to contaminated sites on national list
+  facilities, # Proximity to Risk Management Plan Facilities
+  wastewater, # Proximity to wastewater facilities
+  sen_pop_pe, # % pop. over 65
+  socio_perc # score social economic determants, low best
+  )
+```
 
+```{r}
+acs_b19101_fam_inc <- read.dbf("../maps/censusSHP/acs_b19101_familyincome.dbf")
+attach(acs_b19101_fam_inc)
+```
 
-
-
-
+```{r}
+acs_b19101_fam_inc <- acs_b19101_fam_inc %>% 
+    mutate(low = (E19101138 + E19101139 + E19101140 + E19101141 + 
+                      E19101142 + E19101143)/E19101137) %>% 
+    mutate(mid = (E19101144 + E19101145 + E19101146 + E19101147 + 
+                      E19101148 + E19101149)/E19101137) %>% 
+    mutate(high = (E19101150 + E19101151 + E19101152 + E19101153)/E19101137)
+```
 
 
 
 # References
-
-
