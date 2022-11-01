@@ -156,7 +156,11 @@ kc_house_data_sf <-  kc_house_data_sf %>%
 # Oppgave 3
 
 
-
+```{r}
+kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>% 
+      st_read() %>% 
+  st_transform(2926)
+```
 
 
 
