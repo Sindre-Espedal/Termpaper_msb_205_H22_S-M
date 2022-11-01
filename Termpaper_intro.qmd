@@ -1,7 +1,7 @@
 ---
 title: "Termpaper"
 author: "Sindre og Morten"
-format: html
+format: pdf
 editor: visual
 lang: nb-NO
 bibliography: MSB_205_Termpaper.bib
@@ -24,6 +24,7 @@ library(units)
 library(foreign)
 library(readr)
 library(lubridate)
+library(tinytex)
 options(scipen = 777)
 ```
 
@@ -96,7 +97,7 @@ tilbudet av interesse [@bishop2020].
 Så over variablene og definisjonene på dem hos Kaggle.
 
 ## ii.
-
+Laster inn data
 ```{r}
 kc_house_data <- read_csv("kc_house_data.csv")
 ```
