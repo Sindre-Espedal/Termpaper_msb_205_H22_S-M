@@ -294,6 +294,10 @@ kc_houses_env_var_omit <- kc_houses_env_var_omit %>%
         year_month = substr(date, start = 1, stop = 7))
 ```
 
+```{r}
+st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append = FALSE)
+```
+
 # Oppgave 5
 
 ![K-nearest 3](K-nearest_3.png)
@@ -317,6 +321,37 @@ kc_houses_env_var_omit <- kc_houses_env_var_omit %>%
 ![K10 - Store og billige boliger](K_10_HL.png)
 
 
+# Oppgave 6
+
+## i) 
+
+```{r, message=FALSE}
+attach(kc_houses_env_var_omit)
+```
+## i. Huskarakterisika
+```{r}
+mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15"
+```
+## ii. Huskarakteristika + distanse til cbd + tracts_var
+```{r}
+mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15 + dist_cbd_km + linguist_2 + poverty_pe"
+```
+## iii. Huskarakteristika + distanse til cbd + EHD
+```{r}
+mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15 + dist_cbd_km + EHD_percen + low + high + year_month"
+```
+
+```{r}
+hedon1 <- lm(mod1, data = kc_houses_env_var_omit)
+hedon2 <- lm(mod2, data = kc_houses_env_var_omit)
+hedon3 <- lm(mod3, data = kc_houses_env_var_omit)
+```
+
+```{r}
+huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
 
 
 # References
