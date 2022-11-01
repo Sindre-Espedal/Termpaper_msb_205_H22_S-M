@@ -266,14 +266,14 @@ st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", ap
 
 ## ii.
 
-I QGIS fant vi følgende observasjoner ved å se på *tracts10*, *tracts10_shore* & *kc_houses_env_var*:
+I QGIS fant vi følgende observasjoner ved å se på *tracts10*,
+*tracts10_shore* & *kc_houses_env_var*:
 
 ![observasjon utenfor WA state](utenfor_WAstate.png)
 
 ![Observasjon utenfor kystlinjen.a](utenfor_kystlinjen_1.png)
 
 ![Observasjon utenfor kystlinjen.b](utenfor_kystlinjen_2.png)
-
 
 ## iii.
 
@@ -283,7 +283,6 @@ Dropper Observasjonen 3518000180 ved å:
 kc_houses_env_var <- arrange(kc_houses_env_var, desc(id))
 kc_houses_env_var_omit <- kc_houses_env_var[-c(11997),]
 ```
-
 
 ```{r}
 st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append = FALSE)
@@ -295,11 +294,27 @@ kc_houses_env_var_omit <- kc_houses_env_var_omit %>%
         year_month = substr(date, start = 1, stop = 7))
 ```
 
+# Oppgave 5
 
+![K-nearest 3](K-nearest_3.png)
 
+![K-nearest 10](K-nearest_10.png)
 
+![K3 - Store og dyre boliger](K_3_HH.png)
 
+![K3 - Små og billige boliger](K_3_LL.png)
 
+![K3 - Små og dyre boliger](K_3_LH.png)
+
+![K3 - Store og billige boliger](K_3_HL.png)
+
+![K10 - Store og dyre boliger](K_10_HH.png)
+
+![K10 - Små og billige boliger](K_10_LL.png)
+
+![K10 - Små og dyre boliger](K_10_LH.png)
+
+![K10 - Store og billige boliger](K_10_HL.png)
 
 
 
