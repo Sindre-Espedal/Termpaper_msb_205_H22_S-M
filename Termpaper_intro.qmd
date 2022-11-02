@@ -23,8 +23,8 @@ library(sandwich)
 library(units)
 library(foreign)
 library(readr)
-library(lubridate)
-library(tinytex)
+library(car)
+library(ragg)
 options(scipen = 777)
 ```
 
@@ -328,18 +328,29 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 ```{r, message=FALSE}
 attach(kc_houses_env_var_omit)
 ```
+
+
 ## i. Huskarakteristika
 ```{r}
-mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15"
+mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
 ```
+
+
 ## ii. Huskarakteristika + distanse til cbd + tracts_var
+
 ```{r}
-mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15 + dist_cbd_km + linguist_2 + poverty_pe"
+mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + 
+hazardous_ + lead_perce + socio_perc"
 ```
+
+
 ## iii. Huskarakteristika + distanse til cbd + EHD
+
 ```{r}
-mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + floors + waterfront + view + condition + grade + sqft_above + sqft_basement + yr_built + yr_renovated + sqft_living15 + sqft_lot15 + dist_cbd_km + EHD_percen + low + high + year_month"
+mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
 ```
+
+
 
 ```{r}
 hedon1 <- lm(mod1, data = kc_houses_env_var_omit)
@@ -352,6 +363,68 @@ huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3,
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
+
+### Plots
+
+```{r}
+hedon1 %>% 
+  plot()
+```
+
+```{r}
+hedon2 %>% 
+  plot()
+```
+
+```{r}
+hedon3 %>% 
+  plot()
+```
+
+
+# Oppgave 7
+
+```{r}
+hedon1 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc3)
+```
+
+```{r}
+hedon2 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc4)
+```
+
+```{r}
+hedon3 %>% 
+    linearHypothesis(c("year_month2014-06=0", "year_month2014-07=0",
+                       "year_month2014-08=0", "year_month2014-09=0",
+                       "year_month2014-10=0", "year_month2014-11=0",
+                       "year_month2014-12=0", "year_month2015-01=0",
+                       "year_month2015-02=0", "year_month2015-03=0",
+                       "year_month2015-04=0", "year_month2015-05=0"),
+                     white_adjust = hc1)
+```
+
+
+# Oppgave 8
+kommer i morgen kl 12.
+
+
+
+
+
 
 
 # References
