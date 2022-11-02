@@ -101,26 +101,26 @@ Så over variablene og definisjonene på dem hos Kaggle.
 
 Laster inn data
 
-```{r}
+```{r leser csv-filen}
 kc_house_data <- read_csv("kc_house_data.csv")
 ```
 
 ## iii.
 
-```{r}
+```{r sorterer etter dato}
 kc_house_data <- arrange(kc_house_data, desc(date))
 ```
 
 ## iv.
 
-```{r}
+```{r velger siste salg}
 kc_house_data <- kc_house_data %>% 
   distinct(id, .keep_all = TRUE)
 ```
 
 ## v & vi.
 
-```{r}
+```{r konverterer til sf og transponerer}
 kc_house_data_sf <- st_as_sf(kc_house_data,
                              coords = c(x = "long",
                                         y = "lat"),
@@ -133,21 +133,19 @@ kc_house_data_sf <- st_as_sf(kc_house_data,
 **koordinatene til Seattle:**
 
 *Norske (wikepedia)*:
-
 -   47.60621, -122.33207
 
 *Engelske (wikepedia)*:
-
 -   47.609722, -122.333056
 
-```{r}
+```{r cbd for Seattle og transponerer}
 cbd <- st_sfc(st_point(c(-122.33207, 47.60621)), crs = 4326) %>% 
   st_transform(2926)
 ```
 
 ## viii.
 
-```{r}
+```{r setter avstand fra cbd og konverterer til km}
 kc_house_data_sf <-  kc_house_data_sf %>% 
   mutate(dist_cbd = st_distance(cbd, ., 
                                 by_element = TRUE),
@@ -157,13 +155,13 @@ kc_house_data_sf <-  kc_house_data_sf %>%
 
 # Oppgave 3
 
-```{r}
+```{r leser inn shp-fil og transponerer}
 kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>% 
       st_read() %>% 
   st_transform(2926)
 ```
 
-```{r}
+```{r plukket ut variabler}
 kc_wadoh_map <- kc_wadoh_map %>% 
   select(
   GEO_ID_TRT,
@@ -194,7 +192,7 @@ acs_b19101_fam_inc <- read.dbf("../maps/censusSHP/acs_b19101_familyincome.dbf")
 attach(acs_b19101_fam_inc)
 ```
 
-```{r}
+```{r inntektsvariabler}
 acs_b19101_fam_inc <- acs_b19101_fam_inc %>% 
     mutate(low = (E19101138 + E19101139 + E19101140 + E19101141 + 
                       E19101142 + E19101143)/E19101137) %>% 
