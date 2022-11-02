@@ -306,19 +306,23 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 
 ![K3 - Store og dyre boliger](K_3_HH.png)
 
-![K3 - Små og billige boliger](K_3_LL.png)
+![K3 - Små og billige boliger](K3_LL.png)
 
-![K3 - Små og dyre boliger](K_3_LH.png)
+![K3 - Små og dyre boliger](K3_LH.png)
 
-![K3 - Store og billige boliger](K_3_HL.png)
+![K3 - Store og billige boliger](K3_HL.png)
 
-![K10 - Store og dyre boliger](K_10_HH.png)
+![K10 - Store og dyre boliger](K10_HH.png)
 
-![K10 - Små og billige boliger](K_10_LL.png)
+![K10 - Små og billige boliger](K10_LL.png)
 
-![K10 - Små og dyre boliger](K_10_LH.png)
+![K10 - Små og dyre boliger](K10_LH.png)
 
-![K10 - Store og billige boliger](K_10_HL.png)
+![K10 - Store og billige boliger](K10__HL.png)
+
+![K3 - Bivariate Moran I](K3_BMI.png)
+
+![K10 - Bivariate Moran I](K10_BMI.png)
 
 
 # Oppgave 6
