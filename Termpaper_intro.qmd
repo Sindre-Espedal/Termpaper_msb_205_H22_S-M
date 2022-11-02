@@ -255,14 +255,16 @@ st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", ap
 ## i.
 
 ```{r}
-#summary(kc_tracts10_env_data) <- La til hashtag for å unngå render-problemer
+summary(kc_tracts10_env_data)
 ```
 
 ```{r}
-#summary(kc_tracts10_shore_env_var) <- La til hashtag for å unngå render-problemer
+summary(kc_tracts10_shore_env_var)
 ```
 
 ## ii.
+**Tract10** kartet har ikke havet med seg og får med det en NA observsjon som er utenfor countygrensen.
+**Tracts10_shore** har med havet på kartet, som gjør at det er flere obserasjoner som "havner" ut i havet og med det blir de til NA verdier (25stk). 
 
 I QGIS fant vi følgende observasjoner ved å se på *tracts10*,
 *tracts10_shore* & *kc_houses_env_var*:
@@ -273,8 +275,8 @@ I QGIS fant vi følgende observasjoner ved å se på *tracts10*,
 
 ![Observasjon utenfor kystlinjen.b](utenfor_kystlinjen_2.png)
 
-## iii.
 
+## iii.
 Dropper Observasjonen 3518000180 ved å:
 
 ```{r}
@@ -286,7 +288,7 @@ kc_houses_env_var_omit <- kc_houses_env_var[-c(11997),]
 st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append = FALSE)
 ```
 
-```{r}
+```{r faktor variabel}
 kc_houses_env_var_omit <- kc_houses_env_var_omit %>% 
     mutate(
         year_month = substr(date, start = 1, stop = 7))
@@ -347,8 +349,6 @@ hazardous_ + lead_perce + socio_perc"
 ```{r}
 mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
 ```
-
-
 
 ```{r}
 hedon1 <- lm(mod1, data = kc_houses_env_var_omit)
