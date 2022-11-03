@@ -437,7 +437,14 @@ hedon3 %>%
 
 
 # Oppgave 8
-kommer i morgen kl 12.
+
+```{r henter inn relevant gpkg}
+kc_house_data_6666 <- here("maps/kc_house_data_6666_Sindre_og_Morten.gpkg") %>% 
+  st_read() %>% 
+  st_transform(2926)
+```
+
+
 
 
 
