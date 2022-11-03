@@ -381,7 +381,7 @@ huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3,
     note = "{stars}. T statistic in brackets.")
 ```
 
-[@kuminoff2010] viser til at når en prisfunksjon skiftes over tiden, vil en modell som ignorerer tilfellet få resultater som er skjeve i estimater av helningen til prisfunksjonen, og også derfor estimatene av MWTP. Dette skjer fordi en standard DID-modellen kombinerer informasjon fra to hedoniske prisfunksjoner, altså beskrivelse av markedet før og etter tilfellet forklares i et estimat av MWTP [@bishop2020].
+[@Kuminoff2010] viser til at når en prisfunksjon skiftes over tiden, vil en modell som ignorerer tilfellet få resultater som er skjeve i estimater av helningen til prisfunksjonen, og også derfor estimatene av MWTP. Dette skjer fordi en standard DID-modellen kombinerer informasjon fra to hedoniske prisfunksjoner, altså beskrivelse av markedet før og etter tilfellet forklares i et estimat av MWTP [@bishop2020].
 
 Bishop forklarer videre at man kan møte på denne utfordringen ved å generalisere DID-modell ved å samhandle prisfunksjonsparametere med tidsperiode-dummy. Dette tillater en endring over tid på prisfunksjonsformen.
 
@@ -393,17 +393,17 @@ Vi kan se ut fra resultatene at forklaringskraften i mod2 er såvidt høyere enn
 
 ### Plots
 
-```{r}
+```{r, fig.width=3, fig.height=3}
 hedon1 %>% 
   plot()
 ```
 
-```{r}
+```{r, fig.width=3, fig.height=3}
 hedon2 %>% 
   plot()
 ```
 
-```{r}
+```{r, fig.width=3, fig.height=3}
 hedon3 %>% 
   plot()
 ```
@@ -523,11 +523,11 @@ kc_lagrange_10
 Står ovenfor et lokalt fenomen.
 
 ```{r}
-SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
+SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r}
-SLX_seed <- lmSLX(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
+SLX_seed <- lmSLX(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r}
