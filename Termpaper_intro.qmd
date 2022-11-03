@@ -380,7 +380,17 @@ huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3,
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
-Vi kan se ut fra resultatene at forklaringskraften i mod2 er såvidt høyere enn forklaringskraften i mod3. Selvom mod2 har den sterkeste forklaringskraften så er den såpass marginal at vi velger å gå for mod3 på grunn av færre variabler og med det lettere å arbeide med. I mod3 får vi samlet alle de miljøemessige variablene i en variabel (EHD_percen). 
+
+[@kuminoff2010] viser til at når en prisfunksjon skiftes over tiden, vil en modell som ignorerer tilfellet få resultater som er skjeve i estimater av helningen til prisfunksjonen, og også derfor estimatene av MWTP. Dette skjer fordi en standard DID-modellen kombinerer informasjon fra to hedoniske prisfunksjoner, altså beskrivelse av markedet før og etter tilfellet forklares i et estimat av MWTP [@bishop2020].
+
+Bishop forklarer videre at man kan møte på denne utfordringen ved å generalisere DID-modell ved å samhandle prisfunksjonsparametere med tidsperiode-dummy. Dette tillater en endring over tid på prisfunksjonsformen.
+
+
+**beskrivelse av huxreg**
+
+Vi kan se ut fra resultatene at forklaringskraften i mod2 er såvidt høyere enn forklaringskraften i mod3. Selvom mod2 har den sterkeste forklaringskraften så er den såpass marginal at vi velger å gå for mod3 på grunn av færre variabler og med det lettere å arbeide med. I mod3 får vi samlet alle de miljøemessige variablene i en variabel (EHD_percen).
+
+
 ### Plots
 
 ```{r}
