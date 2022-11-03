@@ -319,6 +319,12 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 
 ![K10 - Store og billige boliger](K10__HL.png)
 
+
+
+# Oppgave 6
+
+## i) 
+
 ## Funn fra EDA
 
 Vi ser at de store konsentrasjonene av store boliger til høye priser er i og rett rundt Seattle sentrum, vi kan også se at Mercer Island er veldig dyr plass og at vestsiden av Bellevue har store og dyre boliger. 
@@ -335,34 +341,29 @@ Vi kan også se at de store og billige husene plasserer seg sammen med de små o
 
 ![K10 - Bivariate Moran I](K10_BMI.png)
 
-Morans I verdien til K3 er på 0,398 og K10 sin er på 0,350. Når vi skulle regne ut Morgans I valgte vi å bruke price og sqft_living. Vi sammenlignet sqft_living og bedrooms, de så ganske like ut på kartet, men hadde forskjellige verdier på morans I. Verdien er finere med sqft_living fordi det er et tydligere mønster på at når sqft_living øker så lir det dyrere. 
+Morans I verdien til K3 er på 0,398 og K10 sin er på 0,350. Når vi skulle regne ut Morgans I valgte vi å bruke price og sqft_living. Vi sammenlignet sqft_living og bedrooms, de så ganske like ut på kartet, men hadde forskjellige verdier på morans I. Verdien er finere med sqft_living fordi det er et tydligere mønster på at når sqft_living øker så blir det dyrere. 
 
-Verdier som er positive taler for klynging. Siden verdiene er svakt positive så viser de til litt klynging.
-
-
-# Oppgave 6
-
-## i) 
+Verdier som er positive taler for klynging. 1 = perfekt klyning og 0 = perfekt tilfeldighet. 
 
 ```{r, message=FALSE}
 attach(kc_houses_env_var_omit)
 ```
 
 
-## i. Huskarakteristika
+### 1. Huskarakteristika
 ```{r}
 mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
 ```
 
 
-## ii. Huskarakteristika + distanse til cbd + tracts_var
+### 2. Huskarakteristika + distanse til cbd + tracts_var
 
 ```{r}
 mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
 ```
 
 
-## iii. Huskarakteristika + distanse til cbd + EHD
+### 3. Huskarakteristika + distanse til cbd + EHD
 
 ```{r}
 mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
@@ -379,7 +380,7 @@ huxreg("Hedon1" = hedon1, "Hedon2" = hedon2, "Hedon3" = hedon3,
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
-
+Vi kan se ut fra resultatene at forklaringskraften i mod2 er såvidt høyere enn forklaringskraften i mod3. Selvom mod2 har den sterkeste forklaringskraften så er den såpass marginal at vi velger å gå for mod3 på grunn av færre variabler og med det lettere å arbeide med. I mod3 får vi samlet alle de miljøemessige variablene i en variabel (EHD_percen). 
 ### Plots
 
 ```{r}
@@ -432,7 +433,9 @@ hedon3 %>%
                        "year_month2015-04=0", "year_month2015-05=0"),
                      white_adjust = hc1)
 ```
+$H_0$ = Det er ikke forskjell mellom salgspris basert på salgstidspunktet. 
 
+Denne nullhypotesen kan vi forkaste på bakgrunn av signifikante F- og P-verdiene. Dette indikerer på at tidsdummyene vi bruker har en effekt, selvom de individuellt ikke er signifikante. Dette sier oss at det er forskjellige salgspriser ved forskjellige salgstidspunktet. 
 
 # Oppgave 8
 
