@@ -25,7 +25,6 @@ library(foreign)
 library(readr)
 library(car)
 library(ragg)
-options(scipen = 777)
 ```
 
 # Oppgave 1
@@ -304,7 +303,7 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 
 ![K-nearest 10](K-nearest_10.png)
 
-![K3 - Store og dyre boliger](K_3_HH.png)
+![K3 - Store og dyre boliger](K3_HH.png)
 
 ![K3 - Små og billige boliger](K3_LL.png)
 
@@ -648,11 +647,11 @@ LR.Sarlm(SDEM_2000, SLX_2000)
 LR1.Sarlm(SDEM_2000)
 ```
 
-```{r utelatt variabler}
+```{r utelatt variabler utvalg 2000}
 Hausman.test(SEM_2000)
 ```
 
-```{r Heteroskedastisitet}
+```{r Heteroskedastisitet utvalg 2000}
 bptest.Sarlm(SEM_2000, studentize = TRUE)
 ```
 
