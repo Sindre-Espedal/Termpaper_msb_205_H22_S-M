@@ -320,9 +320,25 @@ st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append =
 
 ![K10 - Store og billige boliger](K10__HL.png)
 
+## Funn fra EDA
+
+Vi ser at de store konsentrasjonene av store boliger til høye priser er i og rett rundt Seattle sentrum, vi kan også se at Mercer Island er veldig dyr plass og at vestsiden av Bellevue har store og dyre boliger. 
+
+Vi ser at store deler av små boliger til lave priser er i søre del King county. 
+
+Vi ser at de små og dyre boligene er rundt bykjernen, noe som gir mening med tanke på at det er mindre områder å bygge store boliger samt et populært område å bo. 
+
+Vi kan også se at de store og billige husene plasserer seg sammen med de små og billige boligene, dette sier oss at dette er et fattigere område  hvor de lavlønnte bor. 
+
+
+
 ![K3 - Bivariate Moran I](K3_BMI.png)
 
 ![K10 - Bivariate Moran I](K10_BMI.png)
+
+Morans I verdien til K3 er på 0,398 og K10 sin er på 0,350. Når vi skulle regne ut Morgans I valgte vi å bruke price og sqft_living. Vi sammenlignet sqft_living og bedrooms, de så ganske like ut på kartet, men hadde forskjellige verdier på morans I. Verdien er finere med sqft_living fordi det er et tydligere mønster på at når sqft_living øker så lir det dyrere. 
+
+Verdier som er positive taler for klynging. Siden verdiene er svakt positive så viser de til litt klynging.
 
 
 # Oppgave 6
