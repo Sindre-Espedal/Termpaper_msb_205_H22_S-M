@@ -352,14 +352,14 @@ attach(kc_houses_env_var_omit)
 
 ## i. Huskarakteristika
 ```{r}
-mod1 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
+mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
 ```
 
 
 ## ii. Huskarakteristika + distanse til cbd + tracts_var
 
 ```{r}
-mod2 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
+mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
 ```
 
 
@@ -509,12 +509,11 @@ kc_lagrange_10
 Står ovenfor et lokalt fenomen.
 
 ```{r}
-SDEM_seed <- errorsarlm(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc))
+SDEM_seed <- errorsarlm(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
 ```
 
-
 ```{r}
-SLX_seed <- lmSLX(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc))
+SLX_seed <- lmSLX(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
 ```
 
 ```{r}
@@ -527,7 +526,38 @@ SEM_seed <- errorsarlm(mod2, data = kc_house_data_6666,
 summary(impacts(SDEM_seed), zstats = TRUE)
 ```
 
+```{r}
+huxreg("SEM" = SEM_seed, "OLS" = hedon2_seed, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
 
+```{r}
+LR.Sarlm(SDEM_seed, SEM_seed)
+LR.Sarlm(SDEM_seed, SLX_seed)
+```
+
+```{r}
+LR1.Sarlm(SDEM_seed)
+```
+
+```{r utelatt variabler}
+Hausman.test(SEM_seed)
+```
+
+```{r Heteroskedastisitet}
+bptest.Sarlm(SEM_seed, studentize = TRUE)
+```
+
+
+```{r}
+moran.plot(residuals(hedon2_seed), listw = kc_house_data_6666_W10)
+```
+
+
+```{r}
+moran.plot(residuals(SDEM_seed), listw = kc_house_data_6666_W10)
+```
 
 
 
