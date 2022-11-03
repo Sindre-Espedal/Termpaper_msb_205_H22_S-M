@@ -508,6 +508,8 @@ kc_lagrange_10 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W10,
 kc_lagrange_10
 ```
 
+
+
 Står ovenfor et lokalt fenomen.
 
 ```{r}
