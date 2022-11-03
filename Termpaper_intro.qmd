@@ -352,22 +352,21 @@ attach(kc_houses_env_var_omit)
 
 ## i. Huskarakteristika
 ```{r}
-mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
+mod1 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
 ```
 
 
 ## ii. Huskarakteristika + distanse til cbd + tracts_var
 
 ```{r}
-mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + 
-hazardous_ + lead_perce + socio_perc"
+mod2 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
 ```
 
 
 ## iii. Huskarakteristika + distanse til cbd + EHD
 
 ```{r}
-mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_living15 + sqft_lot + sqft_lot15 + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
+mod3 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
 ```
 
 ```{r}
@@ -443,6 +442,97 @@ kc_house_data_6666 <- here("maps/kc_house_data_6666_Sindre_og_Morten.gpkg") %>%
   st_read() %>% 
   st_transform(2926)
 ```
+
+```{r}
+kc_house_data_6666 <- kc_house_data_6666 %>% 
+  mutate(
+    dist_cbd = st_distance(cbd, ., by_element = TRUE),
+    dist_cbd_km = set_units(dist_cbd, km),
+    year_month = substr(date, start = 1, stop = 7)
+  )
+```
+
+```{r}
+kc_house_data_6666 <- kc_house_data_6666 %>% 
+  rename(low = inc_fam_low_per,
+         mid = inc_fam_med_per,
+         high = inc_fam_high_per)
+```
+
+```{r}
+hedon2_seed <- lm(mod2, data = kc_house_data_6666)
+```
+
+```{r}
+huxreg("Full" = hedon2, "seed" = hedon2_seed,
+       error_format = "[{statistic}]",
+       note = "{stars}. T statistic in brackets.")
+```
+```{r}
+kc_house_data_6666_mat_nb <- knearneigh(kc_house_data_6666, k = 3)
+kc_house_data_6666_nb <- knn2nb(kc_house_data_6666_mat_nb)
+kc_house_data_6666_W <- nb2listw(kc_house_data_6666_nb, style = "W")
+```
+
+```{r}
+kc_house_data_6666_mat_nb10 <- knearneigh(kc_house_data_6666, k = 10)
+kc_house_data_6666_nb10 <- knn2nb(kc_house_data_6666_mat_nb10)
+kc_house_data_6666_W10 <- nb2listw(kc_house_data_6666_nb10, style = "W")
+```
+
+```{r}
+lm.morantest(hedon2_seed, kc_house_data_6666_W)
+lm.morantest(hedon2_seed, kc_house_data_6666_W10)
+```
+
+
+```{r}
+moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W, labels = FALSE, pch = 20, cex = 0.3)
+```
+
+```{r}
+moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10, labels = FALSE, pch = 20, cex = 0.3)
+```
+
+```{r}
+kc_lagrange_3 <- lm.LMtests(hedon2_seed, kc_house_data_6666_W, 
+               test = "all")
+kc_lagrange_3
+```
+
+```{r}
+kc_lagrange_10 <- lm.LMtests(hedon2_seed, kc_house_data_6666_W10, 
+               test = "all")
+kc_lagrange_10
+```
+
+Står ovenfor et lokalt fenomen.
+
+```{r}
+SDEM_seed <- errorsarlm(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc))
+```
+
+
+```{r}
+SLX_seed <- lmSLX(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc))
+```
+
+```{r}
+SEM_seed <- errorsarlm(mod2, data = kc_house_data_6666,
+                       listw = kc_house_data_6666_W,
+                       Durbin = FALSE)
+```
+
+```{r}
+summary(impacts(SDEM_seed), zstats = TRUE)
+```
+
+
+
+
+
+
+
 
 
 
