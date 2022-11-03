@@ -366,7 +366,7 @@ mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + fl
 ## iii. Huskarakteristika + distanse til cbd + EHD
 
 ```{r}
-mod3 <- "price ~ bedrooms + I(bedrooms^2) + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
+mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
 ```
 
 ```{r}
@@ -460,11 +460,11 @@ kc_house_data_6666 <- kc_house_data_6666 %>%
 ```
 
 ```{r}
-hedon2_seed <- lm(mod2, data = kc_house_data_6666)
+hedon3_seed <- lm(mod3, data = kc_house_data_6666)
 ```
 
 ```{r}
-huxreg("Full" = hedon2, "seed" = hedon2_seed,
+huxreg("Full" = hedon3, "seed" = hedon3_seed,
        error_format = "[{statistic}]",
        note = "{stars}. T statistic in brackets.")
 ```
@@ -481,8 +481,8 @@ kc_house_data_6666_W10 <- nb2listw(kc_house_data_6666_nb10, style = "W")
 ```
 
 ```{r}
-lm.morantest(hedon2_seed, kc_house_data_6666_W)
-lm.morantest(hedon2_seed, kc_house_data_6666_W10)
+lm.morantest(hedon3_seed, kc_house_data_6666_W)
+lm.morantest(hedon3_seed, kc_house_data_6666_W10)
 ```
 
 
@@ -495,13 +495,13 @@ moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10, labels
 ```
 
 ```{r}
-kc_lagrange_3 <- lm.LMtests(hedon2_seed, kc_house_data_6666_W, 
+kc_lagrange_3 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W, 
                test = "all")
 kc_lagrange_3
 ```
 
 ```{r}
-kc_lagrange_10 <- lm.LMtests(hedon2_seed, kc_house_data_6666_W10, 
+kc_lagrange_10 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W10, 
                test = "all")
 kc_lagrange_10
 ```
@@ -509,15 +509,15 @@ kc_lagrange_10
 Står ovenfor et lokalt fenomen.
 
 ```{r}
-SDEM_seed <- errorsarlm(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
+SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
 ```
 
 ```{r}
-SLX_seed <- lmSLX(mod2, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
+SLX_seed <- lmSLX(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = TRUE)
 ```
 
 ```{r}
-SEM_seed <- errorsarlm(mod2, data = kc_house_data_6666,
+SEM_seed <- errorsarlm(mod3, data = kc_house_data_6666,
                        listw = kc_house_data_6666_W,
                        Durbin = FALSE)
 ```
@@ -527,7 +527,7 @@ summary(impacts(SDEM_seed), zstats = TRUE)
 ```
 
 ```{r}
-huxreg("SEM" = SEM_seed, "OLS" = hedon2_seed, 
+huxreg("SEM" = SEM_seed, "OLS" = hedon3_seed, 
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
@@ -551,7 +551,7 @@ bptest.Sarlm(SEM_seed, studentize = TRUE)
 
 
 ```{r}
-moran.plot(residuals(hedon2_seed), listw = kc_house_data_6666_W10)
+moran.plot(residuals(hedon3_seed), listw = kc_house_data_6666_W10)
 ```
 
 
@@ -559,19 +559,115 @@ moran.plot(residuals(hedon2_seed), listw = kc_house_data_6666_W10)
 moran.plot(residuals(SDEM_seed), listw = kc_house_data_6666_W10)
 ```
 
+```{r}
+moran.test(residuals(SDEM_seed), listw = kc_house_data_6666_W10)
+```
 
 
+# Oppgave 9
 
+```{r}
+set.seed(442)
+kc_houses_env_var_omit_2000 <- kc_houses_env_var_omit[sample(1:nrow(
+    kc_houses_env_var_omit), 2000, replace = FALSE), ]
+```
 
+```{r}
+hedon3_2000 <- lm(mod3, data = kc_houses_env_var_omit_2000)
+```
 
+```{r}
+huxreg("Full" = hedon3, "2000 Seed" = hedon3_2000, "666 Seed" = hedon3_seed, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
 
+```{r}
+kc_house_data_2000_mat_nb <- knearneigh(kc_houses_env_var_omit_2000, k = 3)
+kc_house_data_2000_nb <- knn2nb(kc_house_data_2000_mat_nb)
+kc_house_data_2000_W <- nb2listw(kc_house_data_2000_nb, style = "W")
+kc_house_data_2000_mat_nb10 <- knearneigh(kc_houses_env_var_omit_2000, k = 10)
+kc_house_data_2000_nb10 <- knn2nb(kc_house_data_2000_mat_nb10)
+kc_house_data_2000_W10 <- nb2listw(kc_house_data_2000_nb10, style = "W")
+```
 
+```{r}
+lm.morantest(hedon3_2000, kc_house_data_2000_W)
+lm.morantest(hedon3_2000, kc_house_data_2000_W10)
+```
 
+```{r}
+moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W, labels = FALSE, pch = 20, cex = 0.3)
+```
 
+```{r}
+moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W10, labels = FALSE, pch = 20, cex = 0.3)
+```
 
+```{r}
+kc_lagrange_3_2000 <- lm.LMtests(hedon3_2000, kc_house_data_2000_W, 
+               test = "all")
+kc_lagrange_3_2000
+```
 
+```{r}
+kc_lagrange_10_2000 <- lm.LMtests(hedon3_2000, kc_house_data_2000_W10, 
+               test = "all")
+kc_lagrange_10_2000
+```
 
+```{r}
+SDEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
+                        Durbin = TRUE)
+```
+
+```{r}
+SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = TRUE)
+```
+
+```{r, cache=TRUE}
+SEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = FALSE)
+```
+
+```{r}
+summary(impacts(SDEM_2000), zstats = TRUE)
+```
+
+```{r}
+huxreg("SEM" = SEM_2000, "OLS" = hedon3_2000, 
+    error_format = "[{statistic}]",
+    note = "{stars}. T statistic in brackets.")
+```
+
+```{r}
+LR.Sarlm(SDEM_2000, SEM_2000)
+LR.Sarlm(SDEM_2000, SLX_2000)
+```
+
+```{r}
+LR1.Sarlm(SDEM_2000)
+```
+
+```{r utelatt variabler}
+Hausman.test(SEM_2000)
+```
+
+```{r Heteroskedastisitet}
+bptest.Sarlm(SEM_2000, studentize = TRUE)
+```
+
+```{r}
+moran.plot(residuals(hedon3_2000), listw = kc_house_data_2000_W10)
+```
+
+```{r}
+moran.plot(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
+```
+
+```{r}
+moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
+```
+
+\newpage
 
 # References
-
-
