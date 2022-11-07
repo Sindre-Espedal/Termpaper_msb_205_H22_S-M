@@ -513,8 +513,9 @@ moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W, labels =
 moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10, labels = FALSE, pch = 20, cex = 0.3)
 ```
 
-Ut fra Morans I og plottene kan vi se at...
+Ut i fra Global Morans I og plottene kan vi se at p-verdiene er signifikante som betyr vi kan forkaste $H_0 = Ingen romlig effekt i residualene$. Som betyr at vi har uforklarte spatial effects i residualene.
 
+Vi kan se i plottene at de indikerer det samme. Vi ser at linjen har et positivt stigningstall. Dersom det ikke hadde vært noen effekt ville denne linjen vært mer vannrett ved den stiplede linjen.
 
 
 ```{r}
