@@ -533,7 +533,7 @@ kc_lagrange_10
 Ved å ta en Langrangs multiplikatortest for *K10* og *K3* får vi at verdiene på LMerr og LMlag er signifikante. Når det kommer til RLMerr og RLMlag så kan vi se at disse også er signifikante. For å komme frem til hvilken vi velger av RLMerr og RLMlag så vil vi se på høyeste verdi. Vi ser at RLMerr har høyest verdi på både *K10* og *K3*, med det kan vi si at det beste valget er en robust error modell (SEM). 
 
 ## v.
-Står ovenfor et lokalt fenomen.
+Her står vi ovenfor et lokalt fenomen. Veldig ofte benyttes det lokale effekter når det jobbes med boligdata og boliglitteratur ettersom det gir som oftest effekter lokalt og de nærmeste rundt seg [@LeSage2014].
 
 ```{r}
 SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
@@ -568,14 +568,20 @@ LR.Sarlm(SDEM_seed, SLX_seed)
 LR1.Sarlm(SDEM_seed)
 ```
 
+Ut fra resultatene i likelihood ratio test ser det ut til at SDEM er den beste modellen å anvende.
+
 ```{r utelatt variabler}
 Hausman.test(SEM_seed)
 ```
+
 
 ```{r Heteroskedastisitet}
 bptest.Sarlm(SEM_seed, studentize = TRUE)
 ```
 
+Vi kan forkaste $H_0 = ingen heteroskedastisitet$ og vi har heteroskedastisitet.
+
+## vi.
 
 ```{r}
 moran.plot(residuals(hedon3_seed), listw = kc_house_data_6666_W10)
@@ -590,6 +596,8 @@ moran.plot(residuals(SDEM_seed), listw = kc_house_data_6666_W10)
 moran.test(residuals(SDEM_seed), listw = kc_house_data_6666_W10)
 ```
 
+
+Vi ser at SDEM reduserer den romlige effekten i feilleddet. Likevel ser vi at Moran I ikke er signifikant.
 
 # Oppgave 9
 
