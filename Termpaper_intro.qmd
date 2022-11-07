@@ -612,10 +612,11 @@ hedon3_2000 <- lm(mod3, data = kc_houses_env_var_omit_2000)
 ```
 
 ```{r}
-huxreg("Full" = hedon3, "2000 Seed" = hedon3_2000, "666 Seed" = hedon3_seed, 
+huxreg("Full" = hedon3, "2000 Seed" = hedon3_2000, "6666 Seed" = hedon3_seed, 
     error_format = "[{statistic}]",
     note = "{stars}. T statistic in brackets.")
 ```
+
 
 ```{r}
 kc_house_data_2000_mat_nb <- knearneigh(kc_houses_env_var_omit_2000, k = 3)
@@ -653,11 +654,11 @@ kc_lagrange_10_2000
 
 ```{r}
 SDEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
-                        Durbin = TRUE)
+                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r}
-SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = TRUE)
+SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r, cache=TRUE}
@@ -674,10 +675,13 @@ huxreg("SEM" = SEM_2000, "OLS" = hedon3_2000,
     note = "{stars}. T statistic in brackets.")
 ```
 
+Vi ser *SEM* har lavere verdi i AIC enn OLS, som indikerer på at vi må ta hensyn til romelig autokorrelasjon i feilleddet. 
+
 ```{r}
 LR.Sarlm(SDEM_2000, SEM_2000)
 LR.Sarlm(SDEM_2000, SLX_2000)
 ```
+SDEM ser ut til å være en bedre modell enn SLX. Når vi sjekket autokorrelasjon i feilleddet så ble det enn autokorrelasjon i X-variablene. 
 
 ```{r}
 LR1.Sarlm(SDEM_2000)
@@ -698,10 +702,19 @@ moran.plot(residuals(hedon3_2000), listw = kc_house_data_2000_W10)
 ```{r}
 moran.plot(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 ```
-
+Vi ser at SDEM tar noe av autokorrelasjonen i feilleddet. 
 ```{r}
 moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 ```
+
+## oppsumering
+
+Vi ser at SDEM fungerer og fjerner store deler av den romlige effekten som er i OLSen. Vi ønsket i utgangspunktet å ta i bruk modell 2, men vi fikk ikke til beregningen der og gikk over til modell 3 på grunn av error som oppsto. 
+
+#Konklusjon
+
+Vi ser ikke store forskjeller på resultatene på de forskjellige datasettene. SDEM er den beste modellen for alle tre datasettene. 
+
 
 \newpage
 
