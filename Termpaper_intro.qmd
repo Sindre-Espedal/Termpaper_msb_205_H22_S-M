@@ -449,6 +449,8 @@ Denne nullhypotesen kan vi forkaste på bakgrunn av signifikante F- og P-verdien
 
 # Oppgave 8
 
+## i.
+
 ```{r henter inn relevant gpkg}
 kc_house_data_6666 <- here("maps/kc_house_data_6666_Sindre_og_Morten.gpkg") %>% 
   st_read() %>% 
@@ -471,9 +473,12 @@ kc_house_data_6666 <- kc_house_data_6666 %>%
          high = inc_fam_high_per)
 ```
 
+## ii.
+
 ```{r}
 hedon3_seed <- lm(mod3, data = kc_house_data_6666)
 ```
+
 
 ```{r}
 huxreg("Full" = hedon3, "seed" = hedon3_seed,
@@ -505,6 +510,10 @@ moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W, labels =
 ```{r}
 moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10, labels = FALSE, pch = 20, cex = 0.3)
 ```
+
+Ut fra Morans I og plottene kan vi se at...
+
+
 
 ```{r}
 kc_lagrange_3 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W, 
