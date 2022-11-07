@@ -27,6 +27,8 @@ library(car)
 library(ragg)
 ```
 
+"Data gitt med tillatelse fra King County" ^ [@KCGISC].
+
 # Oppgave 1
 
 ### A
