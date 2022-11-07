@@ -517,7 +517,7 @@ Ut i fra Global Morans I og plottene kan vi se at p-verdiene er signifikante som
 
 Vi kan se i plottene at de indikerer det samme. Vi ser at linjen har et positivt stigningstall. Dersom det ikke hadde vært noen effekt ville denne linjen vært mer vannrett ved den stiplede linjen.
 
-
+## iv. 
 ```{r}
 kc_lagrange_3 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W, 
                test = "all")
@@ -530,8 +530,9 @@ kc_lagrange_10 <- lm.LMtests(hedon3_seed, kc_house_data_6666_W10,
 kc_lagrange_10
 ```
 
+Ved å ta en Langrangs multiplikatortest for *K10* og *K3* får vi at verdiene på LMerr og LMlag er signifikante. Når det kommer til RLMerr og RLMlag så kan vi se at disse også er signifikante. For å komme frem til hvilken vi velger av RLMerr og RLMlag så vil vi se på høyeste verdi. Vi ser at RLMerr har høyest verdi på både *K10* og *K3*, med det kan vi si at det beste valget er en robust error modell (SEM). 
 
-
+## v.
 Står ovenfor et lokalt fenomen.
 
 ```{r}
