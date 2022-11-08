@@ -157,7 +157,7 @@ kc_house_data_sf <-  kc_house_data_sf %>%
 # Oppgave 3
 
 ```{r leser inn shp-fil og transponerer}
-kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>% 
+kc_wadoh_map <- here("maps/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area/WADOH_Environmental_Health_Disparities_Index_Calculated_for_King_County___wadohehdindex_area.shp") %>%
       st_read() %>% 
   st_transform(2926)
 ```
@@ -246,9 +246,12 @@ kc_tracts10_shore_env_var <- st_join(kc_house_data_sf, kc_tracts10_shore_env_dat
 ```{r}
 st_write(kc_house_data, "../maps/kc_house_data.gpkg", append = FALSE)
 st_write(kc_tracts10, "../maps/kc_tracts10.gpkg", append = FALSE)
-st_write(kc_tracts10_shore, "../maps/kc_tracts10_shore.gpkg", append = FALSE)
-st_write(kc_houses_env_var, "../maps/kc_houses_env_var.gpkg", append = FALSE)
-st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", append = FALSE)
+st_write(kc_tracts10_shore, "../maps/kc_tracts10_shore.gpkg", 
+         append = FALSE)
+st_write(kc_houses_env_var, "../maps/kc_houses_env_var.gpkg", 
+         append = FALSE)
+st_write(kc_tracts10_shore_env_var, "../maps/kc_tracts10_shore_env_var.gpkg", 
+         append = FALSE)
 ```
 
 # Oppgave 4
@@ -296,7 +299,8 @@ kc_houses_env_var_omit <- kc_houses_env_var_omit %>%
 ```
 
 ```{r}
-st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg", append = FALSE)
+st_write(kc_houses_env_var_omit, "../maps/kc_houses_env_var_omit.gpkg",
+         append = FALSE)
 ```
 
 # Oppgave 5
@@ -347,28 +351,39 @@ Morans I verdien til K3 er på 0,398 og K10 sin er på 0,350. Når vi skulle reg
 
 Verdier som er positive taler for klynging. 1 = perfekt klyning og 0 = perfekt tilfeldighet. 
 
-```{r, message=FALSE}
+```{r}
 attach(kc_houses_env_var_omit)
 ```
 
 
 ### 1. Huskarakteristika
 ```{r}
-mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month"
+mod1 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + 
+floors + grade + yr_built + yr_renovated + waterfront + 
+condition + view + year_month"
 ```
 
 
 ### 2. Huskarakteristika + distanse til cbd + tracts_var
 
 ```{r}
-mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + year_month + dist_cbd_km + linguist_2 + poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + facilities + wastewater + traffic_pe + diesel + superfund + transporta + housing_pe + ozone + PM25 + toxic_rele + hazardous_ + lead_perce + socio_perc"
+mod2 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + 
+floors + grade + yr_built + yr_renovated + waterfront + 
+condition + view + year_month + dist_cbd_km + linguist_2 + 
+poverty_pe + POC_percen + unemploy_2 + sen_pop_pe + 
+facilities + wastewater + traffic_pe + diesel + superfund + 
+transporta + housing_pe + ozone + PM25 + 
+toxic_rele + hazardous_ + lead_perce + socio_perc"
 ```
 
 
 ### 3. Huskarakteristika + distanse til cbd + EHD
 
 ```{r}
-mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high + year_month"
+mod3 <- "price ~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + 
+floors + grade + yr_built + yr_renovated + waterfront + 
+condition + view + dist_cbd_km + EHD_percen + 
+low + high + year_month"
 ```
 
 ```{r}
@@ -389,8 +404,7 @@ Bishop forklarer videre at man kan møte på denne utfordringen ved å generalis
 
 
 **beskrivelse av huxreg**
-
-Vi kan se ut fra resultatene at forklaringskraften i mod2 er såvidt høyere enn forklaringskraften i mod3. Selvom mod2 har den sterkeste forklaringskraften så er den såpass marginal at vi velger å gå for mod3 på grunn av færre variabler og med det lettere å arbeide med. I mod3 får vi samlet alle de miljøemessige variablene i en variabel (EHD_percen).
+Vi kan se ut fra resultatene (*tabellen kom til sist i pdf*) at forklaringskraften i mod2 er såvidt høyere enn forklaringskraften i mod3. Selvom mod2 har den sterkeste forklaringskraften så er den såpass marginal at vi velger å gå for mod3 på grunn av færre variabler og med det lettere å arbeide med. I mod3 får vi samlet alle de miljøemessige variablene i en variabel (EHD_percen).
 
 
 ### Plots
@@ -506,11 +520,13 @@ lm.morantest(hedon3_seed, kc_house_data_6666_W10)
 
 
 ```{r}
-moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W, labels = FALSE, pch = 20, cex = 0.3)
+moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W,
+           labels = FALSE, pch = 20, cex = 0.3)
 ```
 
 ```{r}
-moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10, labels = FALSE, pch = 20, cex = 0.3)
+moran.plot(log(kc_house_data_6666$price), listw = kc_house_data_6666_W10,
+           labels = FALSE, pch = 20, cex = 0.3)
 ```
 
 Ut i fra Global Morans I og plottene kan vi se at p-verdiene er signifikante som betyr vi kan forkaste $H_0 = Ingen romlig effekt i residualene$. Som betyr at vi har uforklarte spatial effects i residualene.
@@ -536,11 +552,20 @@ Ved å ta en Langrangs multiplikatortest for *K10* og *K3* får vi at verdiene p
 Her står vi ovenfor et lokalt fenomen. Veldig ofte benyttes det lokale effekter når det jobbes med boligdata og boliglitteratur ettersom det gir som oftest effekter lokalt og de nærmeste rundt seg [@LeSage2014].
 
 ```{r}
-SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
+SDEM_seed <- errorsarlm(mod3, data = kc_house_data_6666, 
+                        listw = kc_house_data_6666_W, 
+                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + 
+                                              sqft_above + floors + grade + yr_built + yr_renovated + waterfront + 
+                                              condition + view + dist_cbd_km + 
+                                              EHD_percen + low + high))
 ```
 
 ```{r}
-SLX_seed <- lmSLX(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
+SLX_seed <- lmSLX(mod3, data = kc_house_data_6666, listw = kc_house_data_6666_W, 
+                  Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + 
+                                        sqft_lot + sqft_above + floors + grade + yr_built + 
+                                        yr_renovated + waterfront + condition + view + 
+                                        dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r}
@@ -633,11 +658,15 @@ lm.morantest(hedon3_2000, kc_house_data_2000_W10)
 ```
 
 ```{r}
-moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W, labels = FALSE, pch = 20, cex = 0.3)
+moran.plot(log(kc_houses_env_var_omit_2000$price), 
+           listw = kc_house_data_2000_W, 
+           labels = FALSE, pch = 20, cex = 0.3)
 ```
 
 ```{r}
-moran.plot(log(kc_houses_env_var_omit_2000$price), listw = kc_house_data_2000_W10, labels = FALSE, pch = 20, cex = 0.3)
+moran.plot(log(kc_houses_env_var_omit_2000$price), 
+           listw = kc_house_data_2000_W10, 
+           labels = FALSE, pch = 20, cex = 0.3)
 ```
 
 ```{r}
@@ -653,16 +682,27 @@ kc_lagrange_10_2000
 ```
 
 ```{r}
-SDEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, 
-                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
+SDEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, 
+                        listw = kc_house_data_2000_W, 
+                        Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + 
+                                              sqft_lot + sqft_above + floors + grade + 
+                                              yr_built + yr_renovated + waterfront + condition + view + 
+                                              dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r}
-SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + sqft_lot + sqft_above + floors + grade + yr_built + yr_renovated + waterfront + condition + view + dist_cbd_km + EHD_percen + low + high))
+SLX_2000 <- lmSLX(mod3, data = kc_houses_env_var_omit_2000, 
+                  listw = kc_house_data_2000_W, 
+                  Durbin = as.formula(~ bedrooms + bathrooms + sqft_living + 
+                                        sqft_lot + sqft_above + floors + grade + 
+                                        yr_built + yr_renovated + waterfront + condition + 
+                                        view + dist_cbd_km + EHD_percen + low + high))
 ```
 
 ```{r, cache=TRUE}
-SEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, listw = kc_house_data_2000_W, Durbin = FALSE)
+SEM_2000 <- errorsarlm(mod3, data = kc_houses_env_var_omit_2000, 
+                       listw = kc_house_data_2000_W, 
+                       Durbin = FALSE)
 ```
 
 ```{r}
@@ -675,7 +715,7 @@ huxreg("SEM" = SEM_2000, "OLS" = hedon3_2000,
     note = "{stars}. T statistic in brackets.")
 ```
 
-Vi ser *SEM* har lavere verdi i AIC enn OLS, som indikerer på at vi må ta hensyn til romelig autokorrelasjon i feilleddet. 
+Vi ser (*tabellen kom til sist i pdf*) **SEM** har lavere verdi i AIC enn OLS, som indikerer på at vi må ta hensyn til romelig autokorrelasjon i feilleddet. 
 
 ```{r}
 LR.Sarlm(SDEM_2000, SEM_2000)
