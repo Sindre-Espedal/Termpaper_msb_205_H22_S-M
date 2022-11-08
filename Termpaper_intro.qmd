@@ -707,7 +707,7 @@ Vi ser at SDEM tar noe av autokorrelasjonen i feilleddet.
 moran.test(residuals(SDEM_2000), listw = kc_house_data_2000_W10)
 ```
 
-## oppsumering
+## oppsumering.
 
 Vi ser at SDEM fungerer og fjerner store deler av den romlige effekten som er i OLSen. Vi ønsket i utgangspunktet å ta i bruk modell 2, men vi fikk ikke til beregningen der og gikk over til modell 3 på grunn av error som oppsto. 
 
